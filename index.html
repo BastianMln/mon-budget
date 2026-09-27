@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Mon Budget</title>
+  <meta name="description" content="Dépenses, budgets par catégorie, épargne et simulations — sur iPhone et Mac.">
+  <meta name="theme-color" content="#f4f6f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f1412" media="(prefers-color-scheme: dark)">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Budget">
+  <meta name="format-detection" content="telephone=no">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon-192.png" type="image/png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <main id="view" aria-live="polite"></main>
+
+  <button id="fab" data-act="add" aria-label="Ajouter une dépense">+</button>
+
+  <nav id="tabs" aria-label="Navigation">
+    <button data-act="tab" data-view="mois"><span aria-hidden="true">🏠</span>Accueil</button>
+    <button data-act="tab" data-view="projets"><span aria-hidden="true">🎯</span>Projets</button>
+    <button data-act="tab" data-view="comptes"><span aria-hidden="true">🏦</span>Comptes</button>
+    <button data-act="tab" data-view="simus"><span aria-hidden="true">🧮</span>Simulations</button>
+    <button data-act="tab" data-view="reglages"><span aria-hidden="true">⚙️</span>Réglages</button>
+  </nav>
+
+  <div id="sheet-root"></div>
+  <div id="toast" role="status"></div>
+
+  <noscript><p style="padding:2rem">Active JavaScript pour utiliser Mon Budget.</p></noscript>
+  <script src="supabase.js"></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,174 @@
+{
+  "app": "mon-budget",
+  "version": 1,
+  "exported_at": "2026-05-01T00:00:00Z",
+  "data": {
+    "settings": {
+      "default_income": 2000,
+      "projects_total": 1200,
+      "goal_start": "2026-05",
+      "goal_end": "2026-10",
+      "timezone": "Europe/Paris"
+    },
+    "categories": [
+      {
+        "id": "c1",
+        "name": "Loyer",
+        "icon": "🏠",
+        "kind": "fixe",
+        "budget": 700,
+        "position": 0,
+        "archived": false
+      },
+      {
+        "id": "c2",
+        "name": "Abonnements",
+        "icon": "📱",
+        "kind": "fixe",
+        "budget": 30,
+        "position": 1,
+        "archived": false
+      },
+      {
+        "id": "c3",
+        "name": "Épargne auto",
+        "icon": "🐖",
+        "kind": "epargne",
+        "budget": 100,
+        "position": 2,
+        "archived": false
+      },
+      {
+        "id": "c4",
+        "name": "Courses",
+        "icon": "🛒",
+        "kind": "variable",
+        "budget": 250,
+        "position": 3,
+        "archived": false
+      },
+      {
+        "id": "c5",
+        "name": "Bar / resto",
+        "icon": "🍺",
+        "kind": "variable",
+        "budget": 80,
+        "position": 4,
+        "archived": false
+      },
+      {
+        "id": "c6",
+        "name": "Transport",
+        "icon": "🚆",
+        "kind": "variable",
+        "budget": 60,
+        "position": 5,
+        "archived": false
+      },
+      {
+        "id": "c7",
+        "name": "Autre",
+        "icon": "📦",
+        "kind": "variable",
+        "budget": 0,
+        "position": 6,
+        "archived": false
+      }
+    ],
+    "fixed_charges": [
+      {
+        "id": "f1",
+        "category_id": "c1",
+        "label": "Loyer",
+        "amount": 700,
+        "day": 1,
+        "active": true
+      },
+      {
+        "id": "f2",
+        "category_id": "c3",
+        "label": "Virement épargne",
+        "amount": 100,
+        "day": 5,
+        "active": true
+      }
+    ],
+    "transactions": [
+      {
+        "date": "2026-05-01",
+        "amount": 700,
+        "category_id": "c1",
+        "label": "Loyer",
+        "source": "fixe",
+        "fixed_key": "f1:2026-05"
+      },
+      {
+        "date": "2026-05-05",
+        "amount": 100,
+        "category_id": "c3",
+        "label": "Virement épargne",
+        "source": "fixe",
+        "fixed_key": "f2:2026-05"
+      },
+      {
+        "date": "2026-05-06",
+        "amount": 54.2,
+        "category_id": "c4",
+        "label": "Marché"
+      },
+      {
+        "date": "2026-05-09",
+        "amount": 18.5,
+        "category_id": "c5",
+        "merchant": "Le Zinc"
+      },
+      {
+        "date": "2026-05-12",
+        "amount": 9.99,
+        "category_id": "c2",
+        "label": "Musique"
+      },
+      {
+        "date": "2026-05-20",
+        "amount": 35,
+        "category_id": null,
+        "merchant": "Station Total"
+      }
+    ],
+    "months": [
+      {
+        "month": "2026-05",
+        "income": 2100
+      }
+    ],
+    "projects": [
+      {
+        "name": "Vélo",
+        "price": 600,
+        "bought": false,
+        "position": 0
+      },
+      {
+        "name": "Week-end",
+        "price": null,
+        "bought": false,
+        "position": 1
+      }
+    ],
+    "accounts": [
+      {
+        "name": "Livret A",
+        "kind": "livret",
+        "balance": 3000,
+        "rate": 1.7,
+        "position": 0
+      }
+    ],
+    "merchant_rules": [
+      {
+        "merchant": "le zinc",
+        "category_id": "c5"
+      }
+    ]
+  }
+}
