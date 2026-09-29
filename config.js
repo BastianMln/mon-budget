@@ -14,4 +14,4 @@
 // d'essayer en local sur l'appareil).
 // ─────────────────────────────────────────────────────────────────────────────
 export const SUPABASE_URL = 'https://iohcnuadffrmcgshrihu.supabase.co';
-export const SUPABASE_KEY = 'sb_publishable_1gQ_lx7gZj2znhVK_4hdTw_YErAO2Mt';
+export const SUPABASE_KEY = 'sb_publishable_0AfkImWfBplnWDG374xZwQ_E4z17xLV';
