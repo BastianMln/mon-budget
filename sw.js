@@ -1,6 +1,6 @@
 // Mode hors ligne : l'app s'ouvre même sans réseau.
 // Stratégie « réseau d'abord » : les mises à jour arrivent dès qu'on est en ligne.
-const CACHE = 'mon-budget-v2';
+const CACHE = 'mon-budget-v4';
 const SHELL = [
   './', './index.html', './app.css', './manifest.webmanifest',
   './app.js', './calc.js', './store.js', './config.js', './supabase.js',
@@ -22,7 +22,7 @@ self.addEventListener('fetch', (e) => {
   const url = new URL(req.url);
   if (req.method !== 'GET' || url.origin !== location.origin) return;   // Supabase : jamais en cache
   e.respondWith(
-    fetch(req)
+    fetch(req, { cache: 'no-cache' })   // toujours vérifier auprès du serveur : les mises à jour arrivent tout de suite
       .then((res) => {
         if (res.ok) { const copy = res.clone(); caches.open(CACHE).then((c) => c.put(req, copy)); }
         return res;

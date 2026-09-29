@@ -409,3 +409,4 @@ details.group[open] > summary h2::after { content: '▴'; }
 .opt select { flex: 1; }
 .refund-row .tx { flex: 1; width: auto; min-width: 0; }
 html, body { overflow-x: hidden; }
+.server-line { font-size: 0.8rem; margin-top: 16px; }

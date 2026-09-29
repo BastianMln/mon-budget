@@ -4,7 +4,7 @@
 import * as C from './calc.js';
 import * as B from './bank.js';
 import {
-  createStore, saveDeviceConfig, setLocalMode, storage, newId, newToken, StoreError,
+  createStore, getConfig, saveDeviceConfig, setLocalMode, storage, newId, newToken, StoreError,
 } from './store.js';
 
 const VERSION = '2.0.0';
@@ -842,7 +842,17 @@ function viewAuth() {
     <div class="logo">€</div><h1>Mon Budget</h1>
     <p class="muted">Tes dépenses, tes budgets et ton épargne, sur tous tes appareils.</p>
     ${forms[m] || forms.login}
+    ${serverLine()}
   </div>`;
+}
+
+function serverLine() {
+  const cfg = getConfig();
+  if (!cfg) return '';
+  const host = cfg.url.replace(/^https?:\/\//, '').split('.')[0];
+  const src = cfg.source === 'app' ? 'clé du fichier config.js' : 'clé saisie sur cet appareil';
+  const reset = cfg.source === 'app' ? '' : ' · <button class="link" data-act="reset-config">Changer</button>';
+  return `<p class="muted center-text server-line">Serveur : ${esc(host)} · ${src} (…${esc(cfg.key.slice(-4))})${reset}</p>`;
 }
 
 // ── Assistant de démarrage ──────────────────────────────────────────────────
@@ -1591,6 +1601,7 @@ const actions = {
   },
   'auth-mode': (el) => { S.authMode = el.dataset.mode; S.authMsg = null; render(); },
   'local-mode': () => { setLocalMode(true); location.reload(); },
+  'reset-config': () => { storage.del('mb.config'); location.reload(); },
 };
 
 document.addEventListener('click', (e) => {

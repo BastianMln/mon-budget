@@ -32,7 +32,7 @@ const storage = {
 export { storage };
 
 export function getConfig() {
-  if (SUPABASE_URL && SUPABASE_KEY) return { url: SUPABASE_URL, key: SUPABASE_KEY, source: 'app' };
+  if (SUPABASE_URL.trim() && SUPABASE_KEY.trim()) return { url: SUPABASE_URL.trim().replace(/\/+$/, ''), key: SUPABASE_KEY.trim(), source: 'app' };
   const c = storage.get('mb.config');
   if (c?.url && c?.key) return { url: c.url, key: c.key, source: 'appareil' };
   return null;
@@ -66,7 +66,9 @@ function frenchAuth(msg = '') {
   if (m.includes('rate limit') || m.includes('too many')) return 'Trop de tentatives. Réessaie dans quelques minutes.';
   if (m.includes('invalid email') || m.includes('unable to validate email')) return 'Adresse email invalide.';
   if (m.includes('signups not allowed') || m.includes('signup is disabled')) return 'Les inscriptions sont fermées sur ce serveur.';
-  if (m.includes('fetch') || m.includes('load failed') || m.includes('network')) return 'Pas de connexion internet.';
+  if (m.includes('not authorized') || m.includes('sending') || m.includes('smtp')) return 'Le serveur n’a pas pu envoyer l’email de confirmation. Dans Supabase : Authentication → Sign In / Providers → Email → décoche « Confirm email », puis réessaie.';
+  if (m.includes('invalid api key') || m.includes('no api key')) return 'Clé Supabase refusée : la clé et l’adresse doivent venir du même projet Supabase (Project Settings → API Keys).';
+  if (m.includes('fetch') || m.includes('load failed') || m.includes('network')) return navigator.onLine ? 'Impossible de joindre le serveur Supabase (projet en pause ou adresse incorrecte ?).' : 'Pas de connexion internet.';
   return msg || 'Erreur inconnue.';
 }
 
